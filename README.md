@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 Placement Aptitude Pro
 
-## Getting Started
+An AI-powered mock assessment platform designed to help students prepare for corporate campus placements. This application dynamically generates quantitative aptitude and logical reasoning tests, simulates a real enterprise testing environment, and provides deep topic-by-topic performance analysis.
 
-First, run the development server:
+## ✨ Key Features
 
-```bash
+*   **🧠 AI-Powered Question Generation:** Utilizes the Groq API (Llama-3.1-8b) to instantly generate unique, placement-standard multiple-choice questions.
+*   **🏢 Enterprise-Grade UI:** A clean, professional, and distraction-free interface mimicking real corporate testing platforms (TCS iON, HackerRank, etc.).
+*   **📊 Comprehensive Topic Analysis:** Tracks user responses to identify strong chapters (≥60% accuracy) and weak areas requiring improvement.
+*   **⏱️ Dynamic Pacing Engine:** Automatically calculates and displays the required seconds-per-question based on the user's selected time constraints.
+*   **💾 Local Session Tracking:** Saves past assessment scores and candidate history directly to the browser's local storage.
+
+---
+
+## 🏗️ System Architecture
+
+This project is built using a modern full-stack JavaScript ecosystem:
+
+*   **Frontend Environment:** Next.js 14 (App Router) & React
+*   **Language:** TypeScript for strict type-safety and interface definitions.
+*   **Styling:** Tailwind CSS for responsive, utility-first UI design.
+*   **Icons:** Lucide-React for crisp, professional SVG iconography.
+*   **Backend API:** Next.js Route Handlers (`/api/generate`) acting as a secure serverless backend.
+*   **AI Integration:** `groq-sdk` handling server-side secure communication with Groq's LLM inference engine.
+
+### Data Flow
+1. **Configuration:** The user configures test parameters (length, difficulty, time) on the frontend dashboard.
+2. **Request:** The Next.js frontend sends a POST request to the internal `/api/generate` route.
+3. **Prompt Engineering:** The server securely attaches the `GROQ_API_KEY` and constructs a strict JSON-enforced prompt demanding specific mathematical topics.
+4. **Inference & Delivery:** Groq returns the JSON payload, which the server parses, randomizes (shuffling question order and A/B/C/D options), and delivers back to the client.
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to set up and run the project on your local machine.
+
+### Prerequisites
+*   Node.js (v18 or higher)
+*   npm or yarn
+*   A free API key from [Groq Cloud](https://console.groq.com/)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/krishnasharma0329/aptitude_master_app.git](https://github.com/krishnasharma0329/aptitude_master_app.git)
+   cd aptitude_master_app/aptitude-test
+Install dependencies:
+
+Bash
+npm install
+Set up Environment Variables:
+Create a new file named .env.local in the root directory (next to package.json) and add your Groq API key:
+
+Code snippet
+GROQ_API_KEY=gsk_your_actual_api_key_here
+Run the development server:
+
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open the application:
+Navigate to http://localhost:3000 in your web browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📖 Usage
+Dashboard Setup: Enter a candidate name, select the number of questions (5 to 50), choose a difficulty level, and set the total time using the slider.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Assessment: Read the questions carefully. The timer at the top will flash red when time is running low. Click an option to advance to the next question.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Analysis: Review the post-test dashboard to see the overall accuracy, a breakdown of strong/weak chapters, and a detailed review of any incorrect answers.
 
-## Learn More
+👨‍💻 Author
+Krishna Kumar Sharma
 
-To learn more about Next.js, take a look at the following resources:
+Computer Science & Engineering
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built for the next generation of placement preparation.
